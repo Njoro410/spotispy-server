@@ -3,6 +3,8 @@ dotenv.config()
 import express from 'express';
 const app = express();
 const port = 8888;
+import queryString from 'query-string';
+
 
 const CLIENT_ID = process.env.CLIENT_ID
 const CLIENT_SECRET = process.env.CLIENT_SECRET
@@ -18,7 +20,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-    res.redirect(`https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URI}}`)
+    const queryParams = queryString.stringify({
+        client_id:CLIENT_ID,
+        response_type:'code',
+        redirect_uri:REDIRECT_URI,
+    })
+
+    res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`)
 })
 
 
