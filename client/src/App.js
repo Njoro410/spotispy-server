@@ -1,17 +1,34 @@
 import { useState, useEffect } from 'react';
 import { accessToken, logout, getCurrentUserProfile } from './spotify';
-import './App.css';
+// import './App.css';
 import { catchErrors } from './utils';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
+  useLocation
 } from 'react-router-dom';
 import Welcome from "../src/components/Welcome";
 import TopArtists from './components/TopArtists';
 import TopTracks from './components/TopTracks';
 import Playlist from './components/Playlist';
 import Playlists from './components/Playlists';
+
+import { GlobalStyle } from './styles';
+
+
+// Scroll to top of page when changing routes
+// https://reactrouter.com/web/guides/scroll-restoration/scroll-to-top
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 
 function App() {
   const [token, setToken] = useState(null);
@@ -38,7 +55,9 @@ function App() {
 
   return (
     <>
+    <GlobalStyle/>
       <Router>
+        <ScrollToTop/>
         <Routes>
           <Route path="/" element={<Welcome token={token && token} logout={logout} profile={profile && profile} />} />
           <Route path="/top-artists" element={<TopArtists/>}/>
