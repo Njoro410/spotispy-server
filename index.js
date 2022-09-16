@@ -14,16 +14,16 @@ const PORT = process.env.PORT || 8888;
 const path = require('path');
 
 // Priority serve any static files.
-app.use(express.static(path.resolve(__dirname, './client/build')));
+app.use(express.static(path.join(__dirname, './client/build')));
 
-app.get('/', (req, res) => {
-    // res.send('Hello, world');
-    const data = {
-        name: 'Brian',
-        isBoy: true,
-    };
-    res.json(data);
-});
+// app.get('/', (req, res) => {
+//     // res.send('Hello, world');
+//     const data = {
+//         name: 'Brian',
+//         isBoy: true,
+//     };
+//     res.json(data);
+// });
 
 /**
  * Generates a random string containing numbers and letters
