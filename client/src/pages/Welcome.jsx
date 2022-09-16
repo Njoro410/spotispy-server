@@ -27,11 +27,16 @@ const StyledLoginButton = styled.a`
 `;
 
 const Welcome = ({ token, profile }) => {
+  const LOGIN_URI =
+  process.env.NODE_ENV !== 'production'
+    ? 'http://localhost:8888/login'
+    : 'https://spoti-spy.herokuapp.com/login';
+
   return (
     <>
       {!token ? (
         <StyledLoginContainer>
-          <StyledLoginButton href="http://localhost:8888/login">
+          <StyledLoginButton href={LOGIN_URI}>
             Log in to SpotiSpy
           </StyledLoginButton>
         </StyledLoginContainer>
