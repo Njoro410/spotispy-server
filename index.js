@@ -40,7 +40,11 @@ app.get('/login', (req, res) => {
     const state = generateRandomString(16);
     res.cookie(stateKey, state)
 
-    const scope = 'user-read-private user-read-email'
+    const scope = [
+        'user-read-private', 
+        'user-read-email', 
+        'user-top-read'
+    ].join(' ');
 
     const queryParams = queryString.stringify({
         client_id: CLIENT_ID,
@@ -83,10 +87,10 @@ app.get('/callback', (req, res) => {
                 //redirect to react app
                 res.redirect(`http://localhost:3000/?${queryParams}`)
                 //pass along tokens in query params
-                
+
 
             } else {
-                res.redirect(`/?${queryString.stringify({error:'invalid_token'})}`)
+                res.redirect(`/?${queryString.stringify({ error: 'invalid_token' })}`)
             }
         })
         .catch(error => {
