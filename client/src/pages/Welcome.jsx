@@ -32,7 +32,7 @@ const Welcome = ({ token, profile }) => {
       {!token ? (
         <StyledLoginContainer>
           <StyledLoginButton href="http://localhost:8888/login">
-            Log in to Spotify
+            Log in to SpotiSpy
           </StyledLoginButton>
         </StyledLoginContainer>
       ) : (
