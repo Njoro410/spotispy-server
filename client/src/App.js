@@ -8,14 +8,14 @@ import {
   useLocation
 } from 'react-router-dom';
 import Welcome from "../src/pages/Welcome";
-import TopArtists from './components/TopArtists';
-import TopTracks from './components/TopTracks';
-import Playlist from './components/Playlist';
-import Playlists from './components/Playlists';
+import TopArtists from './pages/TopArtists';
+import Playlists from './pages/Playlists';
 
 
 import { GlobalStyle } from './styles';
 import styled from 'styled-components/macro';
+import TopTracks from './pages/TopTracks';
+import Playlist from './pages/Playlist';
 
 const StyledLogoutButton = styled.button`
   position: absolute;
