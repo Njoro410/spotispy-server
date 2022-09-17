@@ -20,7 +20,7 @@
   },
   "type": "module",
   "keywords": [],
-  "author": "",
+  "author": "Brian Njoroge",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
